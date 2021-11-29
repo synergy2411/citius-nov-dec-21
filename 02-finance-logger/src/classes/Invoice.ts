@@ -7,6 +7,10 @@ export class Invoice implements HasFormatter{
         private amount : number
     ){}
     format(){
-        return `${this.createdAt} - ${this.amount} to be received from ${this.title}`
+        const day = this.createdAt.toLocaleString("en-US", { day : 'numeric'})
+        const month = this.createdAt.toLocaleString('en-US', { month : 'long'})
+        const year = this.createdAt.getFullYear()
+
+        return `${month} ${day}, ${year} - ${this.amount} to be received from ${this.title}`
     }
 }
