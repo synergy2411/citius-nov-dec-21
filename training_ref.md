@@ -60,3 +60,22 @@ TS -> JS -> Node / Browser
 > Finance Logger : Managing payments / receipts on UI
 
 # TypeScript Code on Server
+
+# ES6 - Arrow Function, Spread/Rest, Destructuring, Block Scope, Template Literals, Promises
+
+Arrow Function -> {}
+- Easier to write
+- Don't have 'this' keyword
+- Can't call with 'new' operator
+- Can't be hoisted
+
+Rest / Spread (...)
+- Rest always comes in function parameter : create the collection from individual items
+- Spread always comes with collection (Array/Object) : spreads the collection into individual item
+
+Destructuring - Array/ Object : unpack the collection
+- Nested Destructuring
+
+Block-scope : restrict the scope of variable within nearest block
+- let 
+- const
