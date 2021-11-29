@@ -13,7 +13,7 @@
   <body>
     <div class="container">
       <div class="jumbotron">
-        <h1 class="display-4">Finance Manager App</h1>
+        <h1 class="display-4 text-center">Finance Logger </h1>
       </div>
       <hr />
       <form>
@@ -69,15 +69,17 @@
         <div class="form-group">
             <div class="row">
                 <div class="col-6">
-                    <button class="btn btn-primary btn-block btn-sm">Add</button>
+                    <button class="btn btn-primary btn-block btn-sm" id="btnAdd">Add</button>
                 </div>
                 <div class="col-6">
-                    <button class="btn btn-warning btn-block btn-sm">Reset</button>
+                    <button class="btn btn-warning btn-block btn-sm" id="btnReset">Reset</button>
                 </div>
             </div>
         </div>
       </form>
+      <hr>
+      <ul class="list-group" id="finance-list"></ul>
     </div>
-    <script src="./build/app.js"></script>
+    <script src="./build/app.js" type="module"></script>
   </body>
 </html>
