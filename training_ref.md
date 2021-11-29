@@ -29,3 +29,34 @@
 - Tea Break : 15Minutes (12:15 - 12:30)
 - Lunch break : 60Minutes (1:30 - 2:30)
 - Tea Break : 15Minutes (4:00 - 4:15)
+
+# to install typescript compiler
+> npm install -g typescript
+> tsc -v
+> tsc basics.ts
+
+
+TS -> JS -> Node / Browser
+
+# JavaScript Types
+- Primitive Type : String, Number, Boolean, Date
+- Reference Type : Object, Array, Function
+
+# TypeScript Types
+- undefined
+- void
+- enum
+- any
+- unknown
+- never
+- null
+- custom types
+
+# to generate tsconfig.json
+> tsc --init
+> tsc --watch | -w
+
+# TypeScript Code on Browser
+> Finance Logger : Managing payments / receipts on UI
+
+# TypeScript Code on Server
