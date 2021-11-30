@@ -1,3 +1,3 @@
-namespace Constants {
+export namespace Constants {
     export const Vname: string = "Toyota";
 }

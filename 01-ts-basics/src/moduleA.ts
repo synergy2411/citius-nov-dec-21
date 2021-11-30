@@ -1,5 +1,7 @@
 /// <reference path="./util.namespace.ts" />
 
+import { Util } from "./util.namespace";
+
 let LUCKY_NUMBER = Math.round(Math.random() * 100);
 
 export { LUCKY_NUMBER };

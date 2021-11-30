@@ -1,6 +1,8 @@
  /// <reference path="./constants.namespace.ts" />
 
-namespace Util {
+import { Constants } from "./constants.namespace";
+
+export namespace Util {
   export namespace Vehicle {
     export function getName() {
       return `${Constants.Vname}`;
@@ -8,7 +10,7 @@ namespace Util {
   }
 
   export namespace Animal {
-    const name: string = "Tiger";
+    const name: string = "Cat";
     export function getName() {
       return `${name}`;
     }

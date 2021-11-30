@@ -14,7 +14,7 @@ var Util;
     })(Vehicle = Util.Vehicle || (Util.Vehicle = {}));
     var Animal;
     (function (Animal) {
-        var name = "Tiger";
+        var name = "Cat";
         function getName() {
             return "" + name;
         }
@@ -23,12 +23,3 @@ var Util;
 })(Util || (Util = {}));
 console.log(Util.Vehicle.getName());
 console.log(Util.Animal.getName());
-/// <reference path="./util.namespace.ts" />
-var LUCKY_NUMBER = Math.round(Math.random() * 100);
-// export { LUCKY_NUMBER };
-var vehicle = Util.Vehicle;
-console.log(vehicle.getName());
-// index.html
-// - jQuery
-// - script A -> jQuery("") / $("")
-// - script B

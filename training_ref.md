@@ -113,9 +113,23 @@ class - componentDidMount, componentDidUpdate, componentWillUnmount
 - External Modules
 - TS Compiler - separate file for each module
 - import / export
+- Can be loaded conditionally
 
 - Internal Namespace
 - TS Compiler - Single entry file (--outfile)
 - Globally available (<reference path="" />)
 - Can be nested
 - Avoid global pollution
+
+
+- tsc --outfile index.js moduleA.ts --module "amd"
+
+
+Browser - ES2015 / ES6
+Node - CommonJS Module (require/ module.exports)
+
+
+- index.html <script src="" type="module">
+- constant.namespace.ts
+- util.namespace.ts <reference path = "constans.namespce.ts" />
+- app.ts <reference path = "util.namespce.ts" />
