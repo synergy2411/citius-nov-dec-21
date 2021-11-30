@@ -90,24 +90,24 @@
 // console.log(emp.getFullName())
 // emp.show()
 // STATIC METHODS AND PROPS
-class Ninja {
-    constructor() {
-        Ninja.numOfInstances++;
-    }
-    getBelt() {
-        return Ninja.isBlackBelt;
-    }
-    getMyNumber() {
-        return Ninja.numOfInstances;
-    }
-}
-Ninja.isBlackBelt = true;
-Ninja.numOfInstances = 0;
-let mario = new Ninja();
-console.log(mario.getMyNumber());
-let luigi = new Ninja();
-console.log(luigi.getMyNumber());
-let yoshi = new Ninja();
-console.log(yoshi.getMyNumber());
+// class Ninja{
+//     static isBlackBelt : boolean = true;
+//     static numOfInstances : number = 0;
+//     constructor(){
+//         Ninja.numOfInstances++;
+//     }
+//     getBelt(){
+//         return Ninja.isBlackBelt;
+//     }
+//     getMyNumber(){
+//         return Ninja.numOfInstances;
+//     }
+// }
+// let mario = new Ninja()
+// console.log(mario.getMyNumber())
+// let luigi = new Ninja()
+// console.log(luigi.getMyNumber())
+// let yoshi = new Ninja()
+// console.log(yoshi.getMyNumber())
 // console.log(mario.getBelt())
 // Ninja.isBlackBelt = false;

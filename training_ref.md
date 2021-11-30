@@ -91,3 +91,15 @@ Block-scope : restrict the scope of variable within nearest block
 - Namespace
 
 # To-do App
+
+
+
+useEffect() : to perform side-effects
+useEffect(()=>{})
+useEffect(()=>{}, [])
+useEffect(()=>{}, [Deps])
+useEffect(()=>{
+    return () => {}
+}, [])
+
+class - componentDidMount, componentDidUpdate, componentWillUnmount
