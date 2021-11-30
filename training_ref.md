@@ -103,3 +103,19 @@ useEffect(()=>{
 }, [])
 
 class - componentDidMount, componentDidUpdate, componentWillUnmount
+
+
+
+- relect-metadata : meta programming - 
+
+
+# Modules vs Namespaces
+- External Modules
+- TS Compiler - separate file for each module
+- import / export
+
+- Internal Namespace
+- TS Compiler - Single entry file (--outfile)
+- Globally available (<reference path="" />)
+- Can be nested
+- Avoid global pollution

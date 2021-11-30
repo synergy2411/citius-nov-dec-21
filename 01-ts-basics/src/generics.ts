@@ -82,3 +82,7 @@ console.log(newNinja)
 
 // displayNinja("")
 // displayNinja(123)
+
+
+
+

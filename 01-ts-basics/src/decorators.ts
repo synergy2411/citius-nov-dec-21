@@ -26,6 +26,8 @@
 //             configurable : value,
 //             writable : value
 //         })
+//         // descriptor.configurable = value
+//         // descriptor.writable = value;
 //     }
 // }
 
@@ -62,22 +64,23 @@
 
 
 
-function First(){
-    console.log("First Decorator Factory")
-    return function(target: any, key : string){
-        console.log("First Decorator Function")
-    }
-}
+// function First(){
+//     console.log("First Decorator Factory")
+//     return function(target: any, key : string){
+//         console.log("First Decorator Function")
+//     }
+// }
 
-function Second(){
-    console.log("Second Decorator Factory")
-    return function(target: any, key : string){
-        console.log("Second Decorator Function")
-    }
-}
+// function Second(){
+//     console.log("Second Decorator Factory")
+//     return function(target: any, key : string){
+//         console.log("Second Decorator Function")
+//     }
+// }
 
-class Person {
-    @First()
-    @Second()
-    name : string = "Foo"
-}
+// class Person {
+//     @First()
+//     @Second()
+//     name : string = "Foo"
+// }
+
