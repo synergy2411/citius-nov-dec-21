@@ -1,3 +1,5 @@
+# Repo Link - https://github.com/synergy2411/citius-nov-dec-21
+
 # What is JavaScript?
 - Dynamically typed language
 - Client (Browser) and Server Side (Node Runtime Environment)
@@ -34,6 +36,7 @@
 > npm install -g typescript
 > tsc -v
 > tsc basics.ts
+> tsc --init
 
 
 TS -> JS -> Node / Browser
@@ -50,7 +53,7 @@ TS -> JS -> Node / Browser
 - unknown
 - never
 - null
-- custom types
+- custom types - Class, Interface, Type Keyword
 
 # to generate tsconfig.json
 > tsc --init
@@ -79,3 +82,12 @@ Destructuring - Array/ Object : unpack the collection
 Block-scope : restrict the scope of variable within nearest block
 - let 
 - const
+
+
+- Classes
+- Generics
+- Decorators
+- Module
+- Namespace
+
+# To-do App
