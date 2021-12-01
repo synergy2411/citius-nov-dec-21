@@ -184,3 +184,11 @@ Node - CommonJS Module (require/ module.exports)
 - mongoose
 - express
 - body-parser
+
+
+# to generate package.json
+> npm init -y
+
+- Download the project and 
+- From project folder > npm install -> package.json -> dependecy section
+
