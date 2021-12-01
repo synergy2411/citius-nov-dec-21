@@ -133,3 +133,43 @@ Node - CommonJS Module (require/ module.exports)
 - constant.namespace.ts
 - util.namespace.ts <reference path = "constans.namespce.ts" />
 - app.ts <reference path = "util.namespce.ts" />
+
+
+
+
+# What is NodeJS?
+- Server-side scripting 
+- Server-side Runtime-Environment - NRE
+- Compiled and Interpreted
+- V8 Engine - Works with Machine language (C++) Chrome/ Chromium based browser
+- Fast
+- Single Threaded
+- Asynchronous / Non-blocking
+- Event-driven Approach
+- Scalable App (Horizontal / vertical scaling)
+- Real-time response
+- Streams
+- Node Package Manager (NPM)
+- Distributed App
+- REST APIs
+- Web Server : Upload / Download Server
+- Microservices
+- Socket programming
+- Web App
+
+
+# Node Installer
+- Node Runtime Environment
+- Node Package Manager
+- Native Module
+
+# Common Native Module
+- http
+- fs
+- http / https
+- events
+- stream
+- path
+- util
+- os
+- zlib
