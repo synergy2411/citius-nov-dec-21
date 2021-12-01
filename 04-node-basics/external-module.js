@@ -1,7 +1,8 @@
 const axios = require("axios").default;
 const chalk = require("chalk");
 const yargs = require("yargs");
-const myModule = require("./file-module")
+
+const myModule = require("./utils/file-module")
 const utils = require("./utils")
 
 axios.get("https://jsonplaceholder.typicode.com/todos/1")
