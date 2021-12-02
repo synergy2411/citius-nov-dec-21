@@ -2,7 +2,8 @@ const fs = require("fs").promises;
 const http = require("http");
 const url = require("url");
 const path = require("path");
-const { getCoordinates } = require("./utils/geocode")
+const { getCoordinates } = require("./utils/geocode");
+const { getForcast } = require("./utils/forecast");
 
 const requestListener = (req, res) => {
     if(req.url === "/home"){
@@ -19,9 +20,15 @@ const requestListener = (req, res) => {
                 console.log(err)
                 return res.end(err)
             }
-            let msg = { "message" : "SUCCESS", latitude, longitude, placeName}
-            res.write(JSON.stringify(msg))
-            return res.end();
+            getForcast(latitude, longitude, (err, {temperature, summary})=>{
+                if(err){
+                    console.log(err)
+                    return res.end(err)
+                }
+                let msg = { "message" : "SUCCESS", temperature, summary, placeName}
+                res.write(JSON.stringify(msg))
+                return res.end();
+            })
         })
     }else{
         return res.end("NOT FOUND")

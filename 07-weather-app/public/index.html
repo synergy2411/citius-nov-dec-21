@@ -23,7 +23,13 @@
                 console.log("Text : ", txtAddress.value)
                 fetch(`/location?address=${txtAddress.value}`)
                     .then(response => response.json())
-                    .then(result => console.log(result))
+                    .then(result => {
+                        const div = document.createElement("div")
+                        div.innerHTML = `
+                        <h4>Current Temperature : ${result.temperature}</h4>
+                        <p>It is aniticipated the at ${result.placeName} will be ${result.summary}</p>`
+                        document.body.append(div)
+                    })
                     .catch(err => console.log(err))
                 })    
         }
