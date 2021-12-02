@@ -21,3 +21,13 @@
 // fs.writeFileSync("txt.md", "This is awesome App")
 // let fileContents = fs.readFileSync("txt.md")
 // console.log(fileContents.toString());
+
+
+const utils = require("./utils/file-module")
+
+let utilObj = utils()
+
+// utilObj.
+
+console.log("Core Module Loaded")
+utilObj.changeLuckyNumber(109);

@@ -19,5 +19,13 @@ const https = require("https");
 // console.log("My Lucky Number : ", myModule.getLuckyNumber());
 // console.log(utils.getMyFortune());
 
-console.log("PROCESS : ", process.argv[2])
-console.log("YARGS : ", yargs.argv.body)
+// console.log("PROCESS : ", process.argv[2])
+// console.log("YARGS : ", yargs.argv.body)
+
+
+const coreModule = require("./core-module")
+const utils = require("./utils/file-module")
+const utilObj = utils();
+
+console.log("External Module Loaded")
+console.log("Lucky Number : ", utilObj.getLuckyNumber())
