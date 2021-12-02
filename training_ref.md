@@ -192,3 +192,7 @@ Node - CommonJS Module (require/ module.exports)
 - Download the project and 
 - From project folder > npm install -> package.json -> dependecy section
 
+# to restart the server on every file change
+-> npm install nodemon -g
+
+View Engines -> Jade, handlebars, ejs, vash
