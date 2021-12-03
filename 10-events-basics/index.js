@@ -1,30 +1,48 @@
 const EventEmitter = require("events").EventEmitter;
+var stream = require("stream")
 
 let emitter = new EventEmitter();
+
+
+// console.log(new stream.Stream() instanceof EventEmitter)
+// console.log(new stream.Readable() instanceof stream.Stream)
+// console.log(new stream.Writable() instanceof stream.Stream)
+// console.log(new stream.Transform() instanceof stream.Stream)
+// console.log(new stream.Duplex() instanceof stream.Stream)
+
+
+process.on("uncaughtException", () => {
+    console.log("Here I will handle the error")
+})
+
+nonExistingFn()
+
+
+
 
 
 // Add the Listener with event -> 'newListener'
 // Remove the Listener from Event -> 'removeListener'
 
-emitter.on("newListener", (eventName, listenerFn) => {
-    console.log(`${listenerFn.name} Listener Added ${eventName}`)
-})
+// emitter.on("newListener", (eventName, listenerFn) => {
+//     console.log(`${listenerFn.name} Listener Added ${eventName}`)
+// })
 
-emitter.on("removeListener", (eventName, listenerFn) => {
-    console.log(`${listenerFn.name} Listener removed ${eventName}`)
-})
+// emitter.on("removeListener", (eventName, listenerFn) => {
+//     console.log(`${listenerFn.name} Listener removed ${eventName}`)
+// })
 
 
-const handlerFn1 = () => {
-    console.log("Foo Event fired")
-    emitter.removeListener("foo", handlerFn2)
-}
-const handlerFn2 = () => console.log("Foo Event fired")
+// const handlerFn1 = () => {
+//     console.log("Foo Event fired")
+//     emitter.removeListener("foo", handlerFn2)
+// }
+// const handlerFn2 = () => console.log("Foo Event fired")
 
-emitter.on("foo", handlerFn1)
-emitter.on("foo", handlerFn2)
+// emitter.on("foo", handlerFn1)
+// emitter.on("foo", handlerFn2)
 
-emitter.emit("foo")
+// emitter.emit("foo")
 
 
 
