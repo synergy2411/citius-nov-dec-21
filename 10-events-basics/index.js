@@ -11,6 +11,9 @@ let emitter = new EventEmitter();
 // console.log(new stream.Duplex() instanceof stream.Stream)
 
 
+// process.stdin.on("")
+// process.stdout.on("")
+
 process.on("uncaughtException", () => {
     console.log("Here I will handle the error")
 })
