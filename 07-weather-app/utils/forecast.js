@@ -13,5 +13,10 @@ const getForcast = (lat, lng, cb) => {
         })
 }
 
+// getForcast("37.8267", "-122.4233", (err, data) =>{
+//     if(err) console.log(err);
+//     console.log(data)
+// })
+
 // getForcast("18.6452489","73.92318563785392")
 module.exports = { getForcast }
