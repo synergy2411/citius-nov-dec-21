@@ -237,6 +237,9 @@ Upload Server -> Client (images/ videos ) to Server (Save on local storage)
 : npm config list --json
 : npm config get <configName>
 : npm config set <configNameWithValue>
+: npm adduser
+: npm publish
+: npm unpublish
 
 # Semantic Versioning - X.Y.Z (non-negative integers)
 - X : Major -> add new feature/functionality which is NOT backward compatible
