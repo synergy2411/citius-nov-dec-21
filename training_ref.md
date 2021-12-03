@@ -213,6 +213,53 @@ https://api.darksky.net/forecast/473fe696d21e65026547b2d50b56014c/37.8267,-122.4
 
 - File System Module
 - Middleware
+- Global Variables (console, process, __dirname, __filename, timer, buffer)
 - npm commands
 - Events System
-- Streams (Readable, Writable, Tranform, Duplex)
+- Streams (Readable, Writable, Transform, Duplex)
+
+
+
+Download Server -> Server (.mp3 / image ) to Client 
+Upload Server -> Client (images/ videos ) to Server (Save on local storage)
+
+
+# Node Installer
+- Node Native Modules
+- Node Runtime Environment (NRE) - REPL
+- Node Package Manager (NPM)
+: npm init
+: npm install
+: npm uninstall / npm rm 
+: npm outdated
+: npm update : update to maximum minor version
+: npm ls [-g --depth 0]: list down all dependencies
+: npm config list --json
+: npm config get <configName>
+: npm config set <configNameWithValue>
+
+# Semantic Versioning - X.Y.Z (non-negative integers)
+- X : Major -> add new feature/functionality which is NOT backward compatible
+- Y : Minor -> add new feature/functionality which is backward compatible
+- Z : Patch -> bug fixes code which is backward compatible
+
+^3.10.1 : Comfortable with all minor version
+~3.10.2 : Comfortable with all patch version
+
+> npm install chalk@4.1.0
+> npm outdated
+> npm update
+> npm rm chalk
+
+> npm install chalk@"~3.9.0"
+> npm outdated
+> npm update
+> npm rm chalk
+
+
+
+
+
+3.10.3
+3.10.8
+3.10.9

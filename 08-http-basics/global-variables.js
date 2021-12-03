@@ -15,11 +15,11 @@
 
 
 
-// Process
+// Process : represent running node process
 
-// global.process.nextTick(()=>{
-//     // Will execute in next tick cycle
-//     console.log("Next tick")
-// })
+global.process.nextTick(()=>{
+    // Will execute in next tick cycle
+    console.log("Next tick")
+})
 
-// console.log("Immediate")
+console.log("Immediate")
