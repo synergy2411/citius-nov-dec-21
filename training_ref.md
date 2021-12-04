@@ -277,8 +277,8 @@ Upload Server -> Client (images/ videos ) to Server (Save on local storage)
 
 
 > npx tsc --init
-
-
+> npm install colors
+> npm install @types/colors -D
 
 
 
