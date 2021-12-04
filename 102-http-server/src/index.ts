@@ -1,4 +1,4 @@
-import http from "http";
+import http, { IncomingMessage, ServerResponse } from "http";
 import colors from "colors";
 import path from "path";
 import fs from "fs";
@@ -10,7 +10,7 @@ const server = http.createServer(app);
 const socket = require("socket.io");
 const io = socket(server);
 
-app.use((req: any, res: any) => {
+app.use((req: IncomingMessage, res: ServerResponse) => {
   fs.promises
     .readFile(path.join(__dirname, "/public/index.html"))
     .then((contents) => {
