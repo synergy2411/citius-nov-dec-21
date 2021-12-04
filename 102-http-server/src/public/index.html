@@ -46,14 +46,17 @@
     </div>
     <script>
         $(document).ready(() => {
-            const socket = io.connect("http://localhost:9090")
+            const socket = io.connect("/")
+            const chatterName = prompt("Enter name please")
             $("#btnSend").on("click", event => {
                 event.preventDefault();
                 let message = $("#txtMessage").val();
                 $("#txtMessage").val('');
-                socket.emit("messageToServer", {message})
-                
+                socket.emit("messageToServer", {message, chatterName})     
             })
+            socket.on("messageToClient", (data)=>{
+                $("#txtTa").append(data.chatterName + " : " + data.message + '\n')
+            }) 
         })
     </script>
 </body>
