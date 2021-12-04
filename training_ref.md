@@ -263,6 +263,44 @@ Upload Server -> Client (images/ videos ) to Server (Save on local storage)
 
 
 
-3.10.3
-3.10.8
-3.10.9
+- TypeScript integration
+    : typescript > TS -> JS
+    : @types/node > provides type definition for Node API
+    : ts-node
+    : nodemon : ts
+- Project structure (boilerplate)
+- Socket Programming (socket.io) (Duplex)
+- HTTPS
+- Transform Stream
+
+
+
+
+> npx tsc --init
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Generate SSL Key & Certificate
+openssl genrsa 1024 > key.pem
+openssl req -x509 -new -key key.pem > cert.pem
