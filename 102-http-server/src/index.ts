@@ -17,7 +17,7 @@ app.use((req: any, res: any) => {
       res.end(contents);
     });
     io.on("connection", () => {
-      console.log("Connection established");
+      console.log("Connection established!");
     });
 });
 
