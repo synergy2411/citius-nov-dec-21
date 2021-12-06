@@ -7,7 +7,6 @@
     "rootDir": "./src",
     "allowJs": true,
     "outDir": "build",
-    "declaration": true,
 
     /* Type Checking */
     "strict": true,
