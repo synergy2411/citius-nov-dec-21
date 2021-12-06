@@ -9,11 +9,38 @@ let notes = [
     { id : 103, title : "Planting", body : "to pot the plants"},
 ]
 
-
-// POST - http://localhost:9001/notes
+app.use(express.json())
 
 // PATCH - http://localhost:9001/notes/101
+app.patch("/notes/:noteId", (req, res) => {
+    const { noteId } = req.params;
+    const position = notes.findIndex(n => n.id === +noteId)
+    if(position >= 0){
+        const { title, body } = req.body;
+        if(title && body){
+            notes[position].title = title;
+            notes[position].body = body;
+            return res.send({...notes[position]})
+        }else{
+            return res.send({error : "Invalid Body"})
+        }
+    }else{
+        return res.send({error : "Note ID does not exist"})
+    }
+})
 
+
+// POST - http://localhost:9001/notes
+app.post("/notes", (req, res) => {
+    const { title, body } = req.body;
+    if(title && body){
+        let newNote = { title, body, id : (notes[notes.length-1].id + 1)}
+        notes.push(newNote)
+        return res.status(201).send({...newNote})
+    }else {
+        return res.status(401).send({error : "Title / Body not found."})
+    }
+})
 
 // DELETE - http://localhost:9001/notes/101
 app.delete("/notes/:noteId", (req, res) => {
@@ -41,7 +68,6 @@ app.get("/notes/:noteId", (req, res) => {
 
 // GET Endpoints - http://localhost:9001/notes
 app.get("/notes", (req, res) => {
-    console.log("URL : ", req.url);
     res.json(notes)
 })
 
