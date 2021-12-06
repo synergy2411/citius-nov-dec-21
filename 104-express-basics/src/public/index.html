@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.1/css/bootstrap.min.css"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <h4>Some contents</h4>
+      <div class="row">
+        <div class="col-8 offset-2">
+          <!-- <form action="http://localhost:9001/login" method="GET"> -->
+          <form>
+            <!-- USERNAME -->
+            <div class="form-group">
+              <label for="username">Username : </label>
+              <input
+                type="text"
+                class="form-control"
+                name="username"
+                id="username"
+              />
+            </div>
+            <!-- PASSWORD -->
+            <div class="form-group">
+              <label for="password">Password : </label>
+              <input
+                type="password"
+                class="form-control"
+                name="password"
+                id="password"
+              />
+            </div>
+            <!-- Button -->
+            <div class="text-center">
+              <input
+                type="button"
+                id="btnSubmit"
+                value="Login"
+                class="btn btn-primary"
+              />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    const btnSubmit = document.querySelector("#btnSubmit");
+    const username = document.querySelector("#username");
+    const password = document.querySelector("#password");
+
+    btnSubmit.addEventListener("click", (event) => {
+      event.preventDefault();
+      console.log(username.value, password.value)
+      fetch("/login", {
+        method: "POST",
+        body: JSON.stringify({
+          username: username.value,
+          password: password.value,
+        }),
+        headers: {
+          "Content-Type": "application/json"
+        },
+      })
+        .then((response) => {
+            console.log(response)
+            response.json().then(console.log).catch(console.log)
+        })
+        .catch(err => console.log(err));
+    });
+  </script>
+</html>
