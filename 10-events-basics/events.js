@@ -1,5 +1,6 @@
 let EventEmitter = require("events").EventEmitter;
 let emitter = new EventEmitter();
+let emitter1 = new EventEmitter();
 
 
 // PubSub
@@ -12,5 +13,10 @@ const handlerFn1 = (data) => {
 }
 
 emitter.on("FOO", handlerFn1)
+emitter.on("BAR", () => {})
 
 emitter.emit("FOO", {message : "SUCCESS"})
+emitter.emit("BAR")
+
+
+emitter1.emit("BAM")

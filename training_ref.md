@@ -270,20 +270,23 @@ Upload Server -> Client (images/ videos ) to Server (Save on local storage)
     : nodemon : ts
 - Project structure (boilerplate)
 - Socket Programming (socket.io) (Duplex)
-- HTTPS
-- Transform Stream
-
-
-
 
 > npx tsc --init
 > npm install colors
 > npm install @types/colors -D
 
 
+- HTTPS
+- Transform Stream
+- Express
+: Creating endpoints
+: URL : Route and Query Parameters
+: POC
 
 
-
+# Asymmetric encyption
+- Public key : available to everyone
+- Private key : available on your server only
 
 
 
@@ -304,3 +307,5 @@ Upload Server -> Client (images/ videos ) to Server (Save on local storage)
 # Generate SSL Key & Certificate
 openssl genrsa 1024 > key.pem
 openssl req -x509 -new -key key.pem > cert.pem
+
+http://localhost:9090 > https://localhost:9090
