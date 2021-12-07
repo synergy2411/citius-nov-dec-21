@@ -1,16 +1,13 @@
 import express from 'express';
 import { findNotes } from './controller/notes.controller';
+import { NotesRouter } from './router/notes.router';
 
 const app = express()
 
-app.get("/notes", async (req,res) => {
-    try{
-        const allNotes = await findNotes()
-        return res.json(allNotes)
-    }catch(err){
-        console.log(err)
-        res.status(500).send(err)
-    }
+app.use("/notes", NotesRouter)
+
+app.get("/home", (req, res) => {
+    res.sendFile(__dirname+"/public/index.html")
 })
 
 app.listen(9095, () => console.log("Server started at PORT : 9095"))

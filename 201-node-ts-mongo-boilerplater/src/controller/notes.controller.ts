@@ -1,3 +1,4 @@
+import { Request, Response } from "express";
 import { MongoClient } from "mongodb";
 
 const mongoURI =
@@ -39,15 +40,13 @@ export const createNote = () => {
       }
     );
 };
-export const findNotes = () => {
-  return new Promise((resolve, reject) => {
+export const findNotes = (req : Request, res: Response) => {
     _db.collection("notes")
       .find()
       .toArray((err: any, docs: any) => {
           if(err) {
-              reject(err)
+              return res.send(err)
           }
-        resolve(docs);
+        return res.json(docs);
       });
-  });
 };
