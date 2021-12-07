@@ -289,23 +289,33 @@ Upload Server -> Client (images/ videos ) to Server (Save on local storage)
 - Private key : available on your server only
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # Generate SSL Key & Certificate
 openssl genrsa 1024 > key.pem
 openssl req -x509 -new -key key.pem > cert.pem
 
 http://localhost:9090 > https://localhost:9090
+
+
+
+
+
+- MongoDB
+- MongoDB Shell / MongoDB Driver
+- Integrate MongoDB with Node/Express
+- Driver API
+- POC
+
+
+- MongoD Executable
+- MongoDB as a Window service
+
+# Mongo Atlas SRV
+
+username = citius
+password = 0LXwebyFsFLhDmt2
+mongodb+srv://citius:0LXwebyFsFLhDmt2@cluster0.e9xsq.mongodb.net/citius-db?retryWrites=true&w=majority
+
+
+# Mongo Client
+- Mongo Shell (CUI)
+- MongoDB Driver > npm install mongodb
