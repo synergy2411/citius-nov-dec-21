@@ -324,7 +324,7 @@ mongodb+srv://citius:0LXwebyFsFLhDmt2@cluster0.e9xsq.mongodb.net/citius-db?retry
 
 
 - Mongoose Library : ORM with MongoDB
-- JWT
+- JWT : JSON Web Token - 
 - File Upload
 - Content Negotation
 
