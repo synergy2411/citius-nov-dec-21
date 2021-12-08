@@ -319,3 +319,18 @@ mongodb+srv://citius:0LXwebyFsFLhDmt2@cluster0.e9xsq.mongodb.net/citius-db?retry
 # Mongo Client
 - Mongo Shell (CUI)
 - MongoDB Driver > npm install mongodb
+
+
+
+
+- Mongoose Library : ORM with MongoDB
+- JWT
+- File Upload
+- Content Negotation
+
+- View Engine
+- Error Handling
+
+- MERN Stack App
+
+-> express -> mongoose
