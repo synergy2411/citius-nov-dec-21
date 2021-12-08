@@ -17,14 +17,14 @@ const findUsers = async (req: Request, res: Response) => {
 const createUser = async (req: Request, res: Response) => {
   try {
     // const newUser = new UserModel(req.body)
-    const { username, password, age, isAdmin } = req.body;
-    let body: User = { username, password, age, isAdmin };
+    const { username, password, age, isAdmin, role } = req.body;
+    let body: User = { username, password, age, isAdmin, role };
     const newUser = UserModel.createUser(body);
     const createdUser = await newUser.save();
     return res.json(createdUser).status(201);
-  } catch (err) {
+  } catch (err : any) {
     console.log(err);
-    return res.send(err).status(500);
+    return res.send({err : err.message}).status(500);
   }
 };
 

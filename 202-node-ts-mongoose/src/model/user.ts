@@ -4,7 +4,8 @@ export interface User {
     username : string;
     password : string;
     age : number;
-    isAdmin? : boolean
+    isAdmin? : boolean,
+    role? : string;
 }
 
 export interface IUserDoc extends Document{
@@ -12,6 +13,7 @@ export interface IUserDoc extends Document{
     password : string;
     age : number;
     isAdmin? : boolean;
+    role? : string;
 }
 
 export interface IUserModel extends Model<IUserDoc>{
