@@ -2,8 +2,10 @@ import { Request, Response } from "express";
 import { UserModel } from '../model/user.model';
 
 const findUsers = async (req: Request, res: Response) => {
+    // const limit = req.query.limit || null
     try{
     const allusers = await UserModel.find()
+    // allusers.filter((user, index) => index < limit )
     return res.json(allusers)
     }catch(err){
         console.log(err);
