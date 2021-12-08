@@ -1,4 +1,5 @@
 import { model, Schema } from 'mongoose';
+import { IUserDoc, IUserModel, User } from './user';
 
 const userSchema = new Schema({
     username : {
@@ -20,6 +21,12 @@ const userSchema = new Schema({
     versionKey : false
 })
 
-const UserModel = model("Users", userSchema)
+userSchema.statics.createUser = (user : User) => {
+    return new UserModel(user)
+}
 
-export { UserModel }
+const UserModel = model<IUserDoc, IUserModel>("Users", userSchema)
+
+export { UserModel };
+
+
