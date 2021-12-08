@@ -11,6 +11,17 @@ const findUsers = async (req: Request, res: Response) => {
     }
 };
 
+const createUser = async(req: Request, res: Response) => {
+    try{
+        const newUser = new UserModel(req.body)
+        const createdUser = await newUser.save()
+        return res.json(createdUser).status(201)
+    }catch(err){
+        console.log(err);
+        return res.send(err).status(500)
+    }
+}
+
 const findUserById = async (req : Request, res: Response) => {
     const {id} = req.params;
     try {
@@ -22,4 +33,27 @@ const findUserById = async (req : Request, res: Response) => {
     }
 }
 
-export { findUsers, findUserById };
+const findUserAndDelete = async (req : Request, res: Response) => {
+    const { id } = req.params;
+    try{
+        const deleteResult = await UserModel.findByIdAndDelete(id)
+        console.log(id, deleteResult)
+        return res.send(deleteResult)
+    }catch(err){
+        console.log(err);
+        return res.send(err).status(500)
+    }
+}
+
+const findUserAndUpdate =  async (req : Request, res: Response) => {
+    const { id } = req.params;
+    try{
+        const updateResult = await UserModel.findByIdAndUpdate(id, req.body)
+        return res.send(updateResult)
+    }catch(err){
+        console.log(err);
+        return res.send(err).status(500)
+    }
+}
+
+export { findUsers, findUserById, createUser, findUserAndDelete, findUserAndUpdate };
