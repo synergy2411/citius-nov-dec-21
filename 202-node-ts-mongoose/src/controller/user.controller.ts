@@ -42,8 +42,7 @@ const findUserById = async (req: Request, res: Response) => {
 const findUserAndDelete = async (req: Request, res: Response) => {
   const { id } = req.params;
   try {
-    const deleteResult = await UserModel.findByIdAndDelete(id);
-    console.log(id, deleteResult);
+    const deleteResult = await UserModel.findByIdAndRemove(id);
     return res.send(deleteResult);
   } catch (err) {
     console.log(err);

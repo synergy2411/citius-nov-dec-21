@@ -1,4 +1,4 @@
-import { model, Schema } from 'mongoose';
+import { Document, model, Schema, ValidatorProps } from 'mongoose';
 import { IUserDoc, IUserModel, User } from './user';
 
 const userSchema = new Schema({
@@ -9,7 +9,7 @@ const userSchema = new Schema({
             validator : (value : string) => {
                 return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value);
             },
-            message : (props: any) => {
+            message : (props: ValidatorProps) => {
                 return `${props.value} is not in proper format`;
             }
         },
@@ -21,7 +21,7 @@ const userSchema = new Schema({
             validator : (v : string) => {
                 return v.includes('!')
             },
-            message : (props: any) => {
+            message : (props: ValidatorProps) => {
                 return `${props.value} does not contain any special character`
             }
         }
@@ -43,6 +43,36 @@ const userSchema = new Schema({
 },{
     versionKey : false
 })
+
+userSchema.pre("init", () => {
+    console.log("PRE : init")
+})
+userSchema.post("init", () => {
+    console.log("POST : init")
+})
+userSchema.pre("save", (next) => {
+    console.log("PRE : SAVE")
+    next();
+})
+userSchema.post("save", (doc : Document) => {
+    setTimeout(() => {
+        console.log("POST : SAVE 1", doc._id)
+    }, 2000);
+})
+userSchema.post("save", () => {
+        console.log("POST : SAVE 2")
+})
+userSchema.pre("validate", () => {
+    console.log("PRE : Validate")
+})
+userSchema.post("validate", (doc : Document) => {
+    console.log("POST : Validate")
+    // doc.remove()
+})
+userSchema.post("remove", (doc : Document) => {
+    console.log("POST : Remove", doc._id)
+})
+
 
 userSchema.statics.createUser = (user : User) => {
     return new UserModel(user)
