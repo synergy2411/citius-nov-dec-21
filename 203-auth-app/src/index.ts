@@ -1,48 +1,34 @@
-import express, { Request, Response } from "express";
-import "./db";
-import { UserModel } from "./model/user.model";
-import { sign, verify } from "jsonwebtoken";
+import express from 'express';
+import multer from 'multer';
 
 const app = express();
-const SECRET_KEY = "My Super Secret Key";
-let _token = "";
-let _userToken = '';
+
+const storage = multer.diskStorage({
+    destination : (req, file, cb) => {
+        cb(null, "./src/upload/")
+    },
+    filename : (req, file, cb) => {
+        const suffix = Date.now().toString();
+        cb(null, suffix + "-" + file.fieldname)
+    }
+})
+const upload = multer({
+    storage
+})
+
+// const upload = multer({dest : 'tmp/'})
 
 app.use(express.json());
+app.use(express.urlencoded({extended : true}));
 
-app.post("/api/login", async (req: Request, res: Response) => {
-  const { username, password } = req.body;
-  try {
-    const foundUser = await UserModel.findOne({ username, password });
-    if (foundUser) {
-      _token = sign({ id: foundUser._id }, SECRET_KEY);
-      return res.send({ ...foundUser._doc, token: _token });
-    } else {
-      return res.send({ error: "User does not exist" }).status(404);
-    }
-  } catch (err) {
-    return res.send({ error: "Error while fetching user" }).status(500);
-  }
-});
+app.get("/login", (req, res) => {
+    res.sendFile(__dirname+"/public/index.html")
+})
 
-const ensureToken = (req: Request, res: Response, next: Function) => {
-  let authHeader = req.headers.authorization;       // 'Bearer <token>'
-  if(!authHeader){
-    return res.send({'error' : "Authorization header not found"})
-  }
-   _userToken = authHeader.split(" ")[1]
-  next();
-};
+app.post("/login", upload.single('avatar') ,(req, res) => {
+    console.log("Body : ", req.body);
+    console.log("FILE : ", req.file)
+    res.send({message : "SUCCESS"})
+})
 
-app.get("/api/protected", ensureToken, (req, res) => {
-    verify(_userToken, SECRET_KEY, (err, decode) => {
-        if(err){
-            console.log("ERROR", err)
-            return res.send(err);
-        }
-        console.log("DECODE : ", decode);
-        return res.send({ message: "SUCCESS" });
-    })
-});
-
-app.listen(9092, () => console.log("Server started at PORT : 9092"));
+app.listen(9091, () =>console.log("Server started at PORT : 9091"))
