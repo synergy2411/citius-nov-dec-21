@@ -1,9 +1,11 @@
 import express from 'express';
 // import pug from 'pug';
 import ejs from 'ejs';
+import ejsLayout from 'express-ejs-layouts';
 
 const app = express()
 app.use(express.static(__dirname + "/public"))
+app.use(ejsLayout)
 app.set("view engine", 'ejs')
 
 // app.set('view engine', 'pug')
