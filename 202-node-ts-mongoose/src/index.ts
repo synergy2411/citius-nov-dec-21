@@ -1,8 +1,16 @@
-import express from 'express';
+import bcrypt from 'bcryptjs';
 import cors from 'cors';
-import './db';
+import express from 'express';
 import morgan from 'morgan';
+import './db';
 import { UserRouter } from './router/user.routes';
+
+
+const hashedPAssword = bcrypt.hashSync("MyPassword", 10);
+console.log(hashedPAssword);
+
+const isMatched = bcrypt.compareSync("MyPassword123", hashedPAssword)
+console.log(isMatched)
 
 const app = express()
 app.use(cors())

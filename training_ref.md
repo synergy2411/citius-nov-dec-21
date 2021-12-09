@@ -347,3 +347,39 @@ mongodb+srv://citius:0LXwebyFsFLhDmt2@cluster0.e9xsq.mongodb.net/citius-db?retry
 - Committed all code to GIT 
 - Committed all code to heroku
     > git push heroku main
+
+# Deployed URL : https://sk-citius-app.herokuapp.com/users
+
+
+
+
+
+
+
+# Patient Portal
+
+MongoDB / Mongoose (2-4hrs)
+    - patients collection
+        : name - required, string
+        : email - required, email
+        : password - required, encrypted password (bcrypth-js)
+        : age : number,required
+        : dieases : [string]
+
+Node : 
+    - /login : POST for accepting user data
+    - /signup : GET API for displaying form
+    
+    - /patients
+        - GET       /patients            Getting all patients
+        - GET       /patients/{id}      Getting one patient
+        - POST      /patients          Creating the patient record
+        - PATCH     /patients/{id}    updating the patient record
+        - DELETE    /patients/{id}    delete the patient record
+
+React (3-4 Hrs)
+    - SPA
+    - Responsive 
+    - Login Page
+    - Patient list in grid/tabular format
+    - Performs CRUD operation on patient
