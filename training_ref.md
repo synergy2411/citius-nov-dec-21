@@ -332,3 +332,18 @@ mongodb+srv://citius:0LXwebyFsFLhDmt2@cluster0.e9xsq.mongodb.net/citius-db?retry
 - Error Handling : 
 
 - MERN Stack App
+
+
+# Heroku Cloud Deployment
+- Make app deployment ready
+    : package.json - "start" : "node build/index.js"
+    : PORT = process.env.PORT || 9001
+    : CORS installed
+- Download and installed Heroku CLI
+- heroku login
+- heroku keys:add
+    - Powershell -> ssh-keygen
+- heroku create <unique-project-name> 
+- Committed all code to GIT 
+- Committed all code to heroku
+    > git push heroku main
