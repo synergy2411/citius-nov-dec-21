@@ -1,54 +1,48 @@
-import express, { Request, Response } from 'express';
-import * as jwt from 'jsonwebtoken';
+import express, { Request, Response } from "express";
+import "./db";
+import { UserModel } from "./model/user.model";
+import { sign, verify } from "jsonwebtoken";
 
 const app = express();
-const MY_KEY = "MY_SUPER_SECRET_KEY";
-let token : string = '';
-let _username : string = '';
+const SECRET_KEY = "My Super Secret Key";
+let _token = "";
+let _userToken = '';
 
 app.use(express.json());
 
-app.post("/api/login", (req : Request, res: Response) => {
-    const {username , password} = req.body;
-    // UserModel.find({username, password}).then(result => {
-    //     token = jwt.sign({_id}, "Secret_key")
-    // }).catch(err => {res.send(err)})
-    if(username && password){
-        // Write Code for authenticating the user from Database
-        const token = jwt.sign({username}, MY_KEY)
-        _username = username;
-        return res.send({token})
-    }else{
-        return res.send({error : "Bad Credentials"})
+app.post("/api/login", async (req: Request, res: Response) => {
+  const { username, password } = req.body;
+  try {
+    const foundUser = await UserModel.findOne({ username, password });
+    if (foundUser) {
+      _token = sign({ id: foundUser._id }, SECRET_KEY);
+      return res.send({ ...foundUser._doc, token: _token });
+    } else {
+      return res.send({ error: "User does not exist" }).status(404);
     }
-})
+  } catch (err) {
+    return res.send({ error: "Error while fetching user" }).status(500);
+  }
+});
 
-const ensureToken = (req : Request, res : Response, next : Function) => {
-    const authHeader = req.headers.authorization
-    if(!authHeader){
-        return res.send({error : 'Auth header not available'})
-    }
-    token = authHeader?.split(" ")[1]
-    next();
-}
+const ensureToken = (req: Request, res: Response, next: Function) => {
+  let authHeader = req.headers.authorization;       // 'Bearer <token>'
+  if(!authHeader){
+    return res.send({'error' : "Authorization header not found"})
+  }
+   _userToken = authHeader.split(" ")[1]
+  next();
+};
 
 app.get("/api/protected", ensureToken, (req, res) => {
-    if(token !== ''){
-        jwt.verify(token, MY_KEY, (err, decode : any) => {
-            if(err){
-                return res.send(err)
-            }else{
-                const { username } = decode;
-                if(username === _username){
-                    return res.send({message : "SUCCESS"})
-                }else{
-                    return res.send({message : "Token Error"})
-                }
-            }
-        })
-    }else{
-        return res.send({error : "Token not found"})
-    }
-})
+    verify(_userToken, SECRET_KEY, (err, decode) => {
+        if(err){
+            console.log("ERROR", err)
+            return res.send(err);
+        }
+        console.log("DECODE : ", decode);
+        return res.send({ message: "SUCCESS" });
+    })
+});
 
-app.listen(9092, () => console.log("Server started at PORT : 9092"))
+app.listen(9092, () => console.log("Server started at PORT : 9092"));

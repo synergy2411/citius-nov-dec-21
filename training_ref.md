@@ -323,14 +323,12 @@ mongodb+srv://citius:0LXwebyFsFLhDmt2@cluster0.e9xsq.mongodb.net/citius-db?retry
 
 
 
-- Mongoose Library : ORM with MongoDB
-- JWT : JSON Web Token - 
-- File Upload
-- Content Negotation
+- Mongoose Library : ORM with MongoDB (Schema, Validation, Hooks)
+- JWT : JSON Web Token - (Auth) - sign, verify
 
-- View Engine
-- Error Handling
+- File Upload - multer : Multipart Form Data
+- Content Negotation - 
+- View Engine : Dynamic template
+- Error Handling : 
 
 - MERN Stack App
-
--> express -> mongoose
