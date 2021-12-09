@@ -1,63 +1,36 @@
 import express from 'express';
-import multer from 'multer';
+// import pug from 'pug';
+import ejs from 'ejs';
 
-const app = express();
-
-const storage = multer.diskStorage({
-    destination : (req, file, cb) => {
-        cb(null, "./src/upload/")
-    },
-    filename : (req, file, cb) => {
-        const suffix = Date.now().toString();
-        cb(null, suffix + "-" + file.fieldname)
-    }
-})
-const upload = multer({
-    storage
-})
-
-// const upload = multer.memoryStorage()
-// const upload = multer({dest : 'tmp/'})
-
-app.use(express.json());
-app.use(express.urlencoded({extended : true}));
+const app = express()
 app.use(express.static(__dirname + "/public"))
+app.set("view engine", 'ejs')
 
-app.get("/login", (req, res) => {
-    res.sendFile(__dirname+"/public/index.html")
-})
+// app.set('view engine', 'pug')
 
-app.post("/login", upload.single('avatar') ,(req, res) => {
-    console.log("Body : ", req.body);
-    console.log("FILE : ", req.file)
-    res.send({message : "SUCCESS"})
-})
-
-// Content Negotiation
-
-const iplWinners = [
-    { team : "SRH", year : 2014},
-    { team : "DD", year : 2013},
-    { team : "CSK", year : 2012},
-    { team : "CSK", year : 2009},
+const username = "Foo";
+const users = [
+    {email : "john@test.com", age : 32},
+    {email : "james@test.com", age : 33},
+    {email : "jenny@test.com", age : 34},
 ]
 
-app.get("/negotiated", (req, res) => {
-    res.format({
-        'text/html' : () => { 
-            res.send(`<ul>
-            <li>${iplWinners[0].team}</li>
-            </ul>`)
-        },
-        'application/json' : () => res.json(iplWinners),
-        'text/plain' : () => {
-            let winners : string = '';
-            iplWinners.forEach(winner => {
-                winners += winner.team + " won in the year " + winner.year + "\n";
-            })
-            res.send(winners)
-        }
+app.get("/index", (req, res) => {
+    res.render("pages/index",{
+        username,
+        users
     })
 })
 
-app.listen(9091, () =>console.log("Server started at PORT : 9091"))
+app.get("/contact", (req, res) => {
+    res.render("pages/contact")
+})
+
+app.get("/home", (req, res) => {
+    res.render("pages/home", {
+        username,
+        users
+    })
+})
+
+app.listen(9091, () => console.log("Server started at PORT : 9091"))

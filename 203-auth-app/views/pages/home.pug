@@ -1,0 +1,13 @@
+doctype html
+html 
+    head 
+        title My Pug Page
+        link(rel="stylesheet", href="./styles.css")
+    body 
+        h3 Pug Template works!
+        #container 
+            p(class="hello")= username
+            ul 
+                each user in users
+                    li= user.email
+        script(src="./app.js") 
