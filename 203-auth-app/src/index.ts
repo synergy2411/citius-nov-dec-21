@@ -1,38 +1,16 @@
 import express from 'express';
-// import pug from 'pug';
-import ejs from 'ejs';
-import ejsLayout from 'express-ejs-layouts';
+import cors from 'cors';
 
 const app = express()
-app.use(express.static(__dirname + "/public"))
-app.use(ejsLayout)
-app.set("view engine", 'ejs')
+app.use(cors())
 
-// app.set('view engine', 'pug')
-
-const username = "Foo";
-const users = [
-    {email : "john@test.com", age : 32},
-    {email : "james@test.com", age : 33},
-    {email : "jenny@test.com", age : 34},
+const todos = [
+    {label : 'grocery', status : false},
+    {label : 'shopping', status : true}
 ]
 
-app.get("/index", (req, res) => {
-    res.render("pages/index",{
-        username,
-        users
-    })
+app.get("/api/todos", (req, res) => {
+    res.json(todos)
 })
 
-app.get("/contact", (req, res) => {
-    res.render("pages/contact")
-})
-
-app.get("/home", (req, res) => {
-    res.render("pages/home", {
-        username,
-        users
-    })
-})
-
-app.listen(9091, () => console.log("Server started at PORT : 9091"))
+app.listen(9091, () => {console.log("Server started at PORT : 9091")})
