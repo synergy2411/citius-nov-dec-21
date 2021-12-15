@@ -119,3 +119,102 @@ db.users.insertMany([
 <!-- Transactions -->
 
 > mongoimport users.json -d usersDB -c users --jsonArray --drop
+
+
+db.users.find({
+    $and: [{
+        "hobbies.title": {
+            $in: ["Sports", "Yoga"]
+        }
+    }, {
+        age: {
+            $exists: true
+        }
+    }]
+})
+
+db.users.find({
+    $or: [{
+        name: "Pankaj"
+    }, {
+        age: {
+            $gte: 30
+        }
+    }]
+})
+
+
+-------------
+Insert Operation : Ordered, writeConcern, Atomicity, mongoimport
+Read Operation : operators, cursor - find()
+Schema Validation
+
+------------
+update Operation
+Array
+Index
+Security
+Fault Tolerance
+Transaction
+
+
+
+
+db.users.updateOne({
+    hobbies: {
+        $elemMatch: {
+            title: "Sports",
+            frequency: {
+                $gte: 3,
+            },
+        },
+    },
+}, {
+    $set: {
+        "hobbies.$.highFrequency": true
+    }
+});
+
+
+db.users.updateOne({
+    age: {
+        $gte: 30
+    }
+}, {
+    $inc: {
+        "hobbies.$[].frequency": -1
+    }
+});
+
+db.users.updateMany({
+    age: {
+        $gte: 30,
+    },
+}, {
+    $set: {
+        "hobbies.$[el].goodFrequency": true,
+    },
+}, {
+    arrayFilters: [{
+        "el.frequency": {
+            $gte: 3,
+        },
+    }, ],
+});
+
+
+
+
+db.users.updateMany({
+    name: "Pankaj"
+}, {
+    $push: {
+        hobbies: {
+            title: "Travelling",
+            frequency: 6,
+        },
+    },
+});
+
+
+
