@@ -151,7 +151,7 @@ Schema Validation
 
 ------------
 update Operation
-Array
+Array ($, $[], $[identifier]) - 
 Index
 Security
 Fault Tolerance
@@ -202,9 +202,6 @@ db.users.updateMany({
     }, ],
 });
 
-
-
-
 db.users.updateMany({
     name: "Pankaj"
 }, {
@@ -218,3 +215,75 @@ db.users.updateMany({
 
 
 
+CRUD 
+deleteOne({})
+deleteMany({})
+
+
+
+
+INDEX
+-----
+mongoimport
+
+db.contacts.explain("executionStats").find({"dob.age" : {$gt : 60}})
+
+db.contacts.createIndex({fieldName : 1/-1})
+
+db.contacts.explain("executionStats").find({"dob.age" : {$gt : 60}})
+
+db.contacts.getIndexes()
+
+load()
+
+
+
+------------
+SECURITY
+--------
+> net stop mongodb
+> mongod --auth (C:/ProgramFiles/mongodb/Server/5.0/bin)
+> mongosh
+> use admin
+> db.createUser({user : "tom", pwd : "jerry", roles : ["userAdminAnyDatabase"]})
+> db.auth("tom", "jerry")
+> use shop
+shop> db.createUser({user : "sk", pwd : "sk", roles : ["readWrite"]})
+shop> db.logout()
+exit from shell
+> mongosh -u sk -p sk --authenticationDatabase shop
+shop> db.products.insertOne({title : "A Book"})
+
+
+> db.logout()
+> db.auth("tom", "jerry")
+shop> db.updateUser("sk", {roles : [{role : "readWrite", db : "blog"}]})
+
+
+
+authors
+    name , age, posts[]
+
+startTransaction()
+posts
+     : title, body, creator
+
+Comments :
+    text
+    postId
+commitTransaction() / abortTransaction()
+
+
+mongosh "mongodb+srv://cluster0.e9xsq.mongodb.net/myFirstDatabase" --username citius
+
+
+TRANSACTIONS
+------------
+
+const session = db.getMongo().startSession()
+const collPost = session.getDatabase("blog").posts
+const collOrders = session.getDatabase("shop").orders
+session.startTransaction()
+collPost.deleteOne();
+collUsers.deleteOne();
+session.commitTransaction()

@@ -34,6 +34,7 @@ const ensureToken = (req: Request, res: Response, next: Function) => {
   next();
 };
 
+
 app.get("/api/protected", ensureToken, (req, res) => {
     verify(_userToken, SECRET_KEY, (err, decode) => {
         if(err){

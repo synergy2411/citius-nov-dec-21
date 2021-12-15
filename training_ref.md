@@ -358,6 +358,13 @@ mongodb+srv://citius:0LXwebyFsFLhDmt2@cluster0.e9xsq.mongodb.net/citius-db?retry
 
 # Patient Portal
 
+- patient-app
+    - client
+        > create-react-app
+    - server
+        > index.ts
+        > Node stuff
+
 MongoDB / Mongoose (2-4hrs)
     - patients collection
         : name - required, string
@@ -383,3 +390,11 @@ React (3-4 Hrs)
     - Login Page
     - Patient list in grid/tabular format
     - Performs CRUD operation on patient
+
+# Why do we need Redux?
+- State Management
+- Avoid Prop-drilling : Context API
+- Avoids multiple backend calls - In-memory variables
+- Reactivity Purpose
+- Change of Comp State -> re-render happens
+- Uni-directional data flow

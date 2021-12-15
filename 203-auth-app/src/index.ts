@@ -26,7 +26,6 @@ const m3 = (req : Request, res : Response, next : NextFunction) => {
 }
 // Error Middleware
 const errorHandler = (err : Error, req : Request, res : Response, next: NextFunction) =>{
-    
     console.log("Something bad happened", err)
 }
 
